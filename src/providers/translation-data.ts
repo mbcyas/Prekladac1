@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { Observable } from "../../node_modules/rxjs/Observable";
@@ -17,7 +17,7 @@ export class TranslationData {
     console.log('Hello TranslationData Provider');
   }
 
-  getTranslation(text) {
+  getTranslation(text):Observable<any> {
     var url = 'http://api.mymemory.translated.net/get?q='+encodeURI(text)+'&langpair=cs|en';
     var response = this.http.get(url).map(res => res.json());
     return response;

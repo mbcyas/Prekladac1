@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TranslationData } from '../../providers/translation-data';
 
@@ -16,7 +16,7 @@ export class HomePage {
   }
 
   /**
-   * gets the user input and triggers translation
+   * user input
    * @param tText 
    */
   public translateClick(tText:String){
