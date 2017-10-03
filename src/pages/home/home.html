@@ -1,14 +1,31 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <h2>Translator</h2>
+  <ion-list>
+    
+      <ion-item>
+        <ion-label fixed>Your text</ion-label>
+        <ion-input #tText type="text" value=""></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <button (click)="translateClick(tText.value)" ion-button full>Translate</button>
+
+    <ion-card>
+      
+        <ion-card-header>
+          Translated
+        </ion-card-header>
+      
+        <ion-card-content>
+           {{ cardContent }}
+        </ion-card-content>
+      
+      </ion-card>
 </ion-content>
