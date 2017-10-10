@@ -9,7 +9,14 @@ import { TranslationData } from '../../providers/translation-data';
 export class HomePage {
 
   private textForTranslation:String = '';
+  private translationFrom:String = '';
+  private translationTo:String = '';
+
   private cardContent:String = '';
+  private cardContent2:String = '';
+
+
+
 
   constructor(public navCtrl: NavController, private translation: TranslationData) {
 
@@ -17,17 +24,43 @@ export class HomePage {
 
   /**
    * user input
-   * @param tText 
+   * @param tText
+   * 
+   * 
    */
-  public translateClick(tText:String){
-    this.textForTranslation = tText;
 
+
+  public translateClick(tText:String,tFrom:String,tTo:String){
+    this.textForTranslation = tText;
+    this.translationFrom = tFrom;
+    this.translationTo = tTo;
+
+    //console.log('home:'+tFrom+'|'+tTo);
     console.log(this.textForTranslation);
 
     // pass text for translation to translation service
-    this.translation.getTranslation(this.textForTranslation).subscribe( (result) => {
+    this.translation.getTranslation(this.textForTranslation,this.translationFrom,this.translationTo).subscribe( 
+     // 1 parametr - uspech
+      (result) => 
+    {
+
       this.cardContent = result.responseData.translatedText;
-    });
+      this.cardContent2 += 'Text: ' + this.textForTranslation+ ' Překlad: ' + result.responseData.translatedText;
+    
+      console.log(result);
+    },
+
+    // 2 parameter - chyba
+    (error) => {
+      console.log(error);
+    },
+
+    //3 parameter - hotovo
+    () => {
+      console.log('Transfer je OK.');
+   } 
+  
+  );
   }
 
 }

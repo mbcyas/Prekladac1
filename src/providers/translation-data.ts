@@ -17,9 +17,12 @@ export class TranslationData {
     console.log('Hello TranslationData Provider');
   }
 
-  getTranslation(text):Observable<any> {
-    var url = 'http://api.mymemory.translated.net/get?q='+encodeURI(text)+'&langpair=cs|en';
+  getTranslation(text,from,to):Observable<any> {
+    var url = 'http://api.mymemory.translated.net/get?q='+encodeURI(text)+'&langpair='+encodeURI(from)+'|'+encodeURI(to)+'';
     var response = this.http.get(url).map(res => res.json());
+    console.log(url);
+    console.log('translation-data:'+from+'|'+to);
+    
     return response;
   }
 

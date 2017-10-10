@@ -6,16 +6,45 @@
 
 <ion-content padding>
   <h2>Translator</h2>
+ 
   <ion-list>
     
       <ion-item>
-        <ion-label fixed>Your text</ion-label>
+        <ion-label floating>Text</ion-label>
         <ion-input #tText type="text" value=""></ion-input>
       </ion-item>
 
+      <ion-item>
+        <ion-label>Přeložit z: </ion-label>
+        <ion-select [(ngModel)]="tFrom">
+
+          <ion-option value="CS">CS</ion-option>
+          <ion-option value="SK">SK</ion-option>
+          <ion-option value="EN">EN</ion-option>
+          <ion-option value="DE">DE</ion-option>
+          
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Přeložit do: </ion-label>
+          <ion-select [(ngModel)]="tTo">
+  
+            <ion-option value="CS" >CS</ion-option>
+            <ion-option value="SK">SK</ion-option>
+            <ion-option value="EN">EN</ion-option>
+            <ion-option value="DE">DE</ion-option>
+            
+          </ion-select>
+        </ion-item>
+
     </ion-list>
 
-    <button (click)="translateClick(tText.value)" ion-button full>Translate</button>
+
+
+    
+
+    <button (click)="translateClick(tText.value, tFrom, tTo)" ion-button full>Translate</button>
 
     <ion-card>
       
@@ -26,6 +55,19 @@
         <ion-card-content>
            {{ cardContent }}
         </ion-card-content>
-      
+
       </ion-card>
+
+
+      <ion-card>
+        
+          <ion-card-header>
+            History
+          </ion-card-header>
+        
+          <ion-card-content>
+            {{ cardContent2 }}
+         </ion-card-content>
+        
+        </ion-card>
 </ion-content>
